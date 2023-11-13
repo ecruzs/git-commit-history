@@ -29,6 +29,8 @@ const CommitsTable = ({ commits }) => {
     []
   );
 
+  const [pageSize, setPageSize] = React.useState(10);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -42,8 +44,16 @@ const CommitsTable = ({ commits }) => {
     gotoPage,
     nextPage,
     previousPage,
+    setPageSize: setPageSizeFromReactTable,
     state: { pageIndex },
-  } = useTable({ columns, data }, usePagination);
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 0, pageSize },
+    },
+    usePagination
+  );
 
   return (
     <>
@@ -84,43 +94,42 @@ const CommitsTable = ({ commits }) => {
       </table>
 
       {/* Paginación Table */}
-      <div className="pagination flex justify-center items-center space-x-2 mt-4">
-        <button
-          onClick={() => gotoPage(0)}
-          disabled={!canPreviousPage}
-          className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50"
-        >
-          {'<<'}
-        </button>
-        <button
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-          className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50"
-        >
-          {'<'}
-        </button>
-        <span className="px-3 py-1 text-sm font-semibold">
-          Página{' '}
-          <strong>
-            {pageIndex + 1} de {pageOptions.length}
-          </strong>
-        </span>
-        <button
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-          className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50"
-        >
-          {'>'}
-        </button>
-        <button
-          onClick={() => gotoPage(pageCount - 1)}
-          disabled={!canNextPage}
-          className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50"
-        >
-          {'>>'}
-        </button>
+      <div className="flex justify-between items-center mt-4">
+        <div className="pagination flex justify-center items-center space-x-2">
+          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50">
+            {'<<'}
+          </button>
+          <button onClick={() => previousPage()} disabled={!canPreviousPage} className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50">
+            {'<'}
+          </button>
+          <span className="px-3 py-1 text-sm font-semibold">
+            Página{' '}
+            <strong>
+              {pageIndex + 1} de {pageOptions.length}
+            </strong>{' '}
+          </span>
+          <button onClick={() => nextPage()} disabled={!canNextPage} className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50">
+            {'>'}
+          </button>
+          <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} className="px-3 py-1 rounded text-white bg-blue-500 hover:bg-blue-700 disabled:opacity-50">
+            {'>>'}
+          </button>
+        </div>
+        <div>
+          <span className="text-sm font-semibold mr-2">Filas por página:</span>
+          <select
+            value={pageSize}
+            onChange={e => setPageSizeFromReactTable(Number(e.target.value))}
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+          >
+            {[10, 20, 30, 40, 50].map(size => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-
     </>
   );
 };
