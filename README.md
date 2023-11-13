@@ -33,14 +33,6 @@ $ yarn install
 # Instalar dependencias del frontend
 $ cd ../frontend
 $ yarn install
-
-## Instalación
-
-Para instalar este proyecto, sigue estos pasos:
-
-# Clonar el repositorio
-$ git clone https://github.com/ecruzs/git-commit-history.git
-$ cd git-commit-history
 ```
 
 ## Ejecución
