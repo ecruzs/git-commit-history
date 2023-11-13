@@ -8,7 +8,6 @@ export class CommitsController {
   @Get('*')
   async getCommits(@Param() params) {
     const repo = params[0];
-    console.log(`Controller: Getting commits for repo ${repo}`);
     return this.githubService.getCommits(repo);
   }
 }
