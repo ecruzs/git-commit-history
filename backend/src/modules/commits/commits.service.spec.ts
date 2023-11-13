@@ -22,21 +22,17 @@ describe('CommitsService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should return an array of commits', async () => {
-    const result = [{}, {}, {}]; // Simulación de commits
-    jest.spyOn(httpService, 'get').mockImplementationOnce(() => of({
-      data: result,
-      status: 200,
-      statusText: 'OK',
-      headers: {},
-      config: { 
-        url: 'http://example.com',
-        method: 'get',
-        headers: {}, // Añadir un objeto vacío para los headers
-        // Otros campos necesarios pueden ir aquí
-      },
-    }));
-    expect(await service.getCommits('repo/name')).toEqual(result);
+  it('should call HttpService.get with the correct URL', async () => {
+    const repo = 'nestjs/nest';
+    const expectedUrl = `https://api.github.com/repos/${repo}/commits`;
+
+    jest
+      .spyOn(httpService, 'get')
+      .mockImplementation(() => of({} as AxiosResponse));
+
+    await service.getCommits(repo);
+
+    expect(httpService.get).toHaveBeenCalledWith(expectedUrl);
   });
 
   it('should handle errors when the API call fails', async () => {
