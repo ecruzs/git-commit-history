@@ -10,7 +10,7 @@
 
 <p align="center">
   <!-- Badges -->
-  <a href="https://your-license-url.com"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
+  <a href="https://your-license-url.com" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
 </p>
 
 ## Descripción
@@ -49,7 +49,7 @@ $ yarn start
 
 ## Uso
 
-Una vez que la aplicación esté en ejecución, puedes acceder a ella a través de <a href="http://localhost:4000">http://localhost:4000</a> para ver el historial de commits.
+Una vez que la aplicación esté en ejecución, puedes acceder a ella a través de <a href="http://localhost:4000" target="_blank">http://localhost:4000</a> para ver el historial de commits.
 
 ## Pruebas
 
