@@ -29,7 +29,7 @@ const CommitsTable = ({ commits }) => {
     []
   );
 
-  const [pageSize, setPageSize] = React.useState(10);
+  // const [pageSize, setPageSize] = React.useState(10);
 
   const {
     getTableProps,
