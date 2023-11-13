@@ -18,7 +18,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [axios_1.HttpModule],
         controllers: [commits_controller_1.CommitsController],
-        providers: [commits_service_1.GithubService],
+        providers: [commits_service_1.CommitsService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

@@ -5,6 +5,7 @@ const CommitsTable = ({ commits }) => {
   const data = React.useMemo(
     () => commits.map(commit => ({
       author: commit.commit.author.name,
+      email: commit.commit.author.email,
       message: commit.commit.message,
       date: new Date(commit.commit.author.date).toLocaleDateString(),
     })),
@@ -18,8 +19,22 @@ const CommitsTable = ({ commits }) => {
         accessor: 'author',
       },
       {
+        Header: 'Email',
+        accessor: 'email',
+      },
+      {
         Header: 'Mensaje',
         accessor: 'message',
+        Cell: ({ value }) => (
+          <>
+            {value.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </>
+        )
       },
       {
         Header: 'Fecha',

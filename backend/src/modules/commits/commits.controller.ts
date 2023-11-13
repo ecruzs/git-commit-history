@@ -1,9 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { GithubService } from './commits.service';
+import { CommitsService } from './commits.service';
 
 @Controller('commits')
 export class CommitsController {
-  constructor(private githubService: GithubService) {}
+  constructor(private githubService: CommitsService) {}
 
   @Get('*')
   async getCommits(@Param() params) {

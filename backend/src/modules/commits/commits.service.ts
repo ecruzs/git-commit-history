@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
-export class GithubService {
+export class CommitsService {
   constructor(private httpService: HttpService) {}
 
   async getCommits(repo: string) {

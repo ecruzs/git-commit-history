@@ -21,7 +21,6 @@ let CommitsController = class CommitsController {
     }
     async getCommits(params) {
         const repo = params[0];
-        console.log(`Controller: Getting commits for repo ${repo}`);
         return this.githubService.getCommits(repo);
     }
 };
@@ -35,6 +34,6 @@ __decorate([
 ], CommitsController.prototype, "getCommits", null);
 exports.CommitsController = CommitsController = __decorate([
     (0, common_1.Controller)('commits'),
-    __metadata("design:paramtypes", [commits_service_1.GithubService])
+    __metadata("design:paramtypes", [commits_service_1.CommitsService])
 ], CommitsController);
 //# sourceMappingURL=commits.controller.js.map

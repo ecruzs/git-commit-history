@@ -9,24 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GithubService = void 0;
+exports.CommitsService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
 const rxjs_1 = require("rxjs");
-let GithubService = class GithubService {
+let CommitsService = class CommitsService {
     constructor(httpService) {
         this.httpService = httpService;
     }
     async getCommits(repo) {
-        console.log(`Service: Getting commits for repo ${repo}`);
         const url = `https://api.github.com/repos/${repo}/commits`;
         const response = await (0, rxjs_1.firstValueFrom)(this.httpService.get(url));
         return response.data;
     }
 };
-exports.GithubService = GithubService;
-exports.GithubService = GithubService = __decorate([
+exports.CommitsService = CommitsService;
+exports.CommitsService = CommitsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [axios_1.HttpService])
-], GithubService);
+], CommitsService);
 //# sourceMappingURL=commits.service.js.map
