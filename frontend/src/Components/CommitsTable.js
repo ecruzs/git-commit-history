@@ -83,7 +83,7 @@ const CommitsTable = ({ commits }) => {
         </tbody>
       </table>
 
-      {/* Paginación */}
+      {/* Paginación Table */}
       <div className="pagination flex justify-center items-center space-x-2 mt-4">
         <button
           onClick={() => gotoPage(0)}
