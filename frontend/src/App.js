@@ -6,7 +6,7 @@ function App() {
   const [commits, setCommits] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/commits/ecruzs/fulltimeforce')
+    axios.get('http://localhost:3000/commits/ecruzs/git-commit-history')
       .then(response => {
         setCommits(response.data);
       })
