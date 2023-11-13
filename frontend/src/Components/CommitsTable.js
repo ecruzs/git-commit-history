@@ -29,8 +29,6 @@ const CommitsTable = ({ commits }) => {
     []
   );
 
-  // const [pageSize, setPageSize] = React.useState(10);
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -45,12 +43,12 @@ const CommitsTable = ({ commits }) => {
     nextPage,
     previousPage,
     setPageSize: setPageSizeFromReactTable,
-    state: { pageIndex },
+    state: { pageIndex, pageSize },
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize },
+      initialState: { pageIndex: 0, pageSize: 10 },
     },
     usePagination
   );
@@ -122,7 +120,7 @@ const CommitsTable = ({ commits }) => {
             onChange={e => setPageSizeFromReactTable(Number(e.target.value))}
             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
           >
-            {[10, 20, 30, 40, 50].map(size => (
+            {[5, 10, 20, 30, 40, 50].map(size => (
               <option key={size} value={size}>
                 {size}
               </option>
